@@ -261,6 +261,8 @@ void sendTelemetryTask(void *pvParameters)
 {
   while (1)
   {
+    Serial.println("Hello World!");
+
     dht20.read();
 
     float temperature = dht20.getTemperature();
