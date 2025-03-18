@@ -261,9 +261,6 @@ void sendTelemetryTask(void *pvParameters)
 {
   while (1)
   {
-    Serial.println("Hello World!");
-    previousDataSend = millis();
-
     dht20.read();
 
     float temperature = dht20.getTemperature();
@@ -317,7 +314,6 @@ void setup()
   InitWiFi();
   Wire.begin(GPIO_NUM_21, GPIO_NUM_22); // Initialize I2C
   dht20.begin();
-  // xTaskCreate( Task3, "Task Temperature" ,2048  ,NULL  ,2 , NULL);
 
   // Create tasks
   xTaskCreate(wifiConnectTask, "wifiConnectTask", 4096, NULL, 1, &TaskHandle);
@@ -329,81 +325,5 @@ void setup()
 
 void loop()
 {
-  // delay(1000);
-  // dht20.begin();
-
-  // if (!reconnect()) {
-  //   return;
-  // }
-
-  // if (!tb.connected()) {
-  //   // Reconnect to the ThingsBoard server,
-  //   // if a connection was disrupted or has not yet been established
-  //   Serial.printf("Connecting to: (%s) with token (%s)\n", THINGSBOARD_SERVER, TOKEN);
-  //   if (!tb.connect(THINGSBOARD_SERVER, TOKEN, THINGSBOARD_PORT))
-  //   {
-  //     Serial.println("Failed to connect");
-  //     return;
-  //   }
-
-  //   tb.sendAttributeData("macAddress", WiFi.macAddress().c_str());
-  // }
-
-  // if (!subscribed)
-  // {
-  //   Serial.println("Subscribing for RPC...");
-  //   const std::array<RPC_Callback, MAX_RPC_SUBSCRIPTIONS> callbacks = {
-  //       // Requires additional memory in the JsonDocument for the JsonDocument that will be copied into the response
-  //       RPC_Callback{RPC_JSON_METHOD, processGetJson},
-  //       // Requires additional memory in the JsonDocument for 5 key-value pairs that do not copy their value into the JsonDocument itself
-  //       RPC_Callback{RPC_TEMPERATURE_METHOD, processTemperatureChange},
-  //       // Internal size can be 0, because if we use the JsonDocument as a JsonVariant and then set the value we do not require additional memory
-  //       RPC_Callback{RPC_SWITCH_METHOD, processSwitchChange}};
-  //   // Perform a subscription. All consequent data processing will happen in
-  //   // processTemperatureChange() and processSwitchChange() functions,
-  //   // as denoted by callbacks array.
-  //   if (!rpc.RPC_Subscribe(callbacks.cbegin(), callbacks.cend()))
-  //   {
-  //     Serial.println("Failed to subscribe for RPC");
-  //     return;
-  //   }
-
-  //   Serial.println("Subscribe done");
-  //   subscribed = true;
-  // }
-
-  // if (millis() - previousDataSend > telemetrySendInterval)
-  // {
-  //   Serial.println("Hello World!");
-  //   previousDataSend = millis();
-
-  //   dht20.read();
-
-  //   float temperature = dht20.getTemperature();
-  //   float humidity = dht20.getHumidity();
-
-  //   if (isnan(temperature) || isnan(humidity))
-  //   {
-  //     Serial.println("Failed to read from DHT20 sensor!");
-  //   }
-  //   else
-  //   {
-  //     Serial.print("Temperature: ");
-  //     Serial.print(temperature);
-  //     Serial.print(" °C, Humidity: ");
-  //     Serial.print(humidity);
-  //     Serial.println(" %");
-
-  //     tb.sendTelemetryData("temperature", temperature);
-  //     tb.sendTelemetryData("humidity", humidity);
-  //   }
-
-  //   tb.sendAttributeData("rssi", WiFi.RSSI());
-  //   tb.sendAttributeData("channel", WiFi.channel());
-  //   tb.sendAttributeData("bssid", WiFi.BSSIDstr().c_str());
-  //   tb.sendAttributeData("localIp", WiFi.localIP().toString().c_str());
-  //   tb.sendAttributeData("ssid", WiFi.SSID().c_str());
-  // }
-
-  // tb.loop();
+  
 }
