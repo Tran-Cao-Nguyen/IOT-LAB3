@@ -10,15 +10,14 @@
 #include <Arduino_MQTT_Client.h>
 #include <Server_Side_RPC.h>
 #include <ThingsBoard.h>
-
 // DHT20 Sensor
 DHT20 dht20;
 
-constexpr char WIFI_SSID[] = "TingleJungle";
-constexpr char WIFI_PASSWORD[] = "HexagonIQ";
+constexpr char WIFI_SSID[] = "ACLAB-IOT";
+constexpr char WIFI_PASSWORD[] = "12345678";
 
 // to understand how to obtain an access token
-constexpr char TOKEN[] = "WeZKMazPOXCCOpW2Ldfv";
+constexpr char TOKEN[] = "cml9kd3458msb3kelae9";
 // Thingsboard we want to establish a connection too
 constexpr char THINGSBOARD_SERVER[] = "app.coreiot.io";
 
@@ -204,7 +203,7 @@ void setup()
   Serial.begin(SERIAL_DEBUG_BAUD);
   delay(1000);
   InitWiFi();
-  Wire.begin(GPIO_NUM_11, GPIO_NUM_12); // Initialize I2C
+  Wire.begin(GPIO_NUM_21, GPIO_NUM_22); // Initialize I2C
   dht20.begin();
   // xTaskCreate( Task3, "Task Temperature" ,2048  ,NULL  ,2 , NULL);
 }
