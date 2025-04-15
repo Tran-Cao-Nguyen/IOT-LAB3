@@ -33,8 +33,8 @@ constexpr uint16_t MAX_MESSAGE_RECEIVE_SIZE = 256U;
 constexpr uint32_t SERIAL_DEBUG_BAUD = 115200U;
 
 // Cấu hình OTA
-constexpr char OTA_VERSION_URL[] = "http://192.168.1.2:8080/version.json"; 
-constexpr char OTA_FIRMWARE_URL[] = "http://192.168.1.2:8080/firmware.bin"; 
+constexpr char OTA_VERSION_URL[] = "http://192.168.1.10:8080/version.json"; 
+constexpr char OTA_FIRMWARE_URL[] = "http://192.168.1.10:8080/firmware.bin"; 
 constexpr char FIRMWARE_VERSION[] = "1.0.0";
 constexpr uint32_t OTA_CHECK_INTERVAL = 60000U; // 1 min
 
